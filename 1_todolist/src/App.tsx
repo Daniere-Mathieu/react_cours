@@ -73,7 +73,7 @@ function App() {
               index={index}
               isEditing={editingIndex === index}
               editingText={editingText}
-              emitDeleteItem={removeTodoItem}
+              emitDeleteItem={openModal}
               emitStartEditing={startEditing}
               emitUpdateTodo={updateTodoItem}
               emitChangeEditingText={setEditingText}
