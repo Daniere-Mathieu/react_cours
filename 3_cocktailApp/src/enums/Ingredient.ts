@@ -1,4 +1,4 @@
-export enum Ingredients {
+export enum Ingredient {
   LIGHT_RUM = "Light_rum",
   APPLEJACK = "Applejack",
   GIN = "Gin",
