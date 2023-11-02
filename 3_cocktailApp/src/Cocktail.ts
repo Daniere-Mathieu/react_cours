@@ -96,7 +96,9 @@ export class Cocktail {
     return { drinks };
   }
 
-  async getByCategory(category: string): Promise<ICocktailFilter | null> {
+  public async getByCategory(
+    category: string
+  ): Promise<ICocktailFilter | null> {
     if (
       !category &&
       !enumsContainsValue(Category, category as unknown as Category)
@@ -112,7 +114,9 @@ export class Cocktail {
     return result;
   }
 
-  async getByIngredient(ingredient: string): Promise<ICocktailFilter | null> {
+  public async getByIngredient(
+    ingredient: string
+  ): Promise<ICocktailFilter | null> {
     if (
       !ingredient &&
       !enumsContainsValue(Ingredient, ingredient as unknown as Ingredient)
@@ -128,7 +132,9 @@ export class Cocktail {
     return result;
   }
 
-  async getByAlcoholic(alcoholic: string): Promise<ICocktailFilter | null> {
+  public async getByAlcoholic(
+    alcoholic: string
+  ): Promise<ICocktailFilter | null> {
     if (
       !alcoholic &&
       !enumsContainsValue(Alcoholic, alcoholic as unknown as Alcoholic)
@@ -144,7 +150,7 @@ export class Cocktail {
     return result;
   }
 
-  async getByGlass(glass: string): Promise<ICocktailFilter | null> {
+  public async getByGlass(glass: string): Promise<ICocktailFilter | null> {
     if (!glass && !enumsContainsValue(Glass, glass as unknown as Glass))
       return null;
     const result = await this._fetchApi<ICocktail>(
@@ -157,7 +163,7 @@ export class Cocktail {
     return result;
   }
 
-  async getRandom(): Promise<ICocktailFilter | null> {
+  public async getRandom(): Promise<ICocktailFilter | null> {
     const result = await this._fetchApi<ICocktail>(CocktailEndpoints.RANDOM);
 
     if (result) {
@@ -166,7 +172,7 @@ export class Cocktail {
     return result;
   }
 
-  async getByName(name: string): Promise<ICocktailFilter | null> {
+  public async getByName(name: string): Promise<ICocktailFilter | null> {
     if (!name) return null;
     const result = await this._fetchApi<ICocktail>(
       CocktailEndpoints.SEARCH_BY_NAME + name
@@ -178,7 +184,7 @@ export class Cocktail {
     return result;
   }
 
-  async getDetailsById(id: string): Promise<ICocktailFilter | null> {
+  public async getDetailsById(id: string): Promise<ICocktailFilter | null> {
     if (!id) return null;
     const result = await this._fetchApi<ICocktail>(
       CocktailEndpoints.DETAILS_COCKTAILS + id
@@ -190,7 +196,7 @@ export class Cocktail {
     return result;
   }
 
-  async getByNameFirstLetter(
+  public async getByNameFirstLetter(
     firstLetter: string
   ): Promise<ICocktailFilter | null> {
     if (!firstLetter) return null;
