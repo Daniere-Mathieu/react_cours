@@ -1,18 +1,22 @@
 import { useState, useEffect } from "react";
 import { Cocktail } from "../Cocktail";
-import { Category } from "../enums/Category";
-import { ICocktailFilter } from "../interfaces/ICocktailFilter";
+import { IDrinkFilter } from "../interfaces/ICocktailFilter";
 
-export function useCocktail() {
-  const [cocktail, setCocktail] = useState<ICocktailFilter | null>(null);
-  const [loading, setLoading] = useState<boolean>(false);
+export function useCocktail(id: string) {
+  const [cocktail, setCocktail] = useState<IDrinkFilter | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
 
-  async function getCocktail() {
+  async function getCocktail(id: string) {
+    setLoading(true);
+
     const cocktail = Cocktail.getInstance();
-    setCocktail(await cocktail.getByCategory(Category.COCKTAIL));
+    setCocktail(await cocktail.getDetailsById(id));
+    setLoading(false);
   }
 
   useEffect(() => {
-    getCocktail();
+    getCocktail(id);
   }, []);
+
+  return { cocktail, loading, getCocktail };
 }

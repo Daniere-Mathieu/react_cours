@@ -1,11 +1,26 @@
-import { useCocktail } from "../hooks/useCocktail";
-
+import Card from "../components/Card";
+import Loading from "../components/Loading";
+import { useCocktails } from "../hooks/useCocktails";
 function Home() {
-  useCocktail();
+  const { cocktail, loading } = useCocktails();
+
   return (
-    <>
-      <div>test</div>
-    </>
+    <div className="list-container">
+      {loading ? (
+        <Loading />
+      ) : (
+        cocktail?.drinks.map((drink, index) => {
+          return (
+            <Card
+              key={index}
+              picture={drink.strDrinkThumb}
+              title={drink.strDrink}
+              id={drink.idDrink}
+            />
+          );
+        })
+      )}
+    </div>
   );
 }
 

@@ -22,15 +22,19 @@ export class Cocktail {
   }
 
   private async _fetchApi<T>(endpoint: string): Promise<T | null> {
-    const response = await fetch(`${this._urlPath}${endpoint}`);
-    if (!response.ok) return null;
+    try {
+      const response = await fetch(`${this._urlPath}${endpoint}`);
+      if (!response.ok) return null;
 
-    const data = await response.json();
+      const data = await response.json();
 
-    if (!data) return null;
+      if (!data) return null;
 
-    console.log(data);
-    return data;
+      return data;
+    } catch (error) {
+      console.error(error);
+      throw new Error("Error fetching data");
+    }
   }
 
   private transformCocktailToCocktailFilter(
@@ -184,14 +188,15 @@ export class Cocktail {
     return result;
   }
 
-  public async getDetailsById(id: string): Promise<ICocktailFilter | null> {
+  public async getDetailsById(id: string): Promise<IDrinkFilter | null> {
     if (!id) return null;
     const result = await this._fetchApi<ICocktail>(
       CocktailEndpoints.DETAILS_COCKTAILS + id
     );
 
     if (result) {
-      return this.transformCocktailToCocktailFilter(result);
+      return this.transformCocktailToCocktailFilter(result)
+        .drinks[0] as IDrinkFilter;
     }
     return result;
   }
