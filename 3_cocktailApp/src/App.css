@@ -42,6 +42,9 @@
   border-radius: 50%;
   border-top: 4px solid #fff;
   animation: spin 1.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
+  position: absolute;
+  top: 50%;
+  left: 50%;
 }
 
 @keyframes spin {
@@ -146,6 +149,8 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
+  width: 100%;
+  position: relative;
 }
 @media only screen and (max-width: 600px) {
   .list-container {
@@ -172,8 +177,9 @@ a:hover {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   position: absolute;
   top: 0;
-  justify-content: flex-start;
+  justify-content: space-between;
   padding: 0 25px;
+  overflow: hidden;
 }
 .header-title {
   font-size: 24px;
@@ -186,7 +192,7 @@ a:hover {
   color: #5a5151;
 }
 main {
-  max-width: 1600px;
+  max-width: 1480px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
@@ -195,4 +201,47 @@ main {
   flex-direction: column;
   width: 100%;
   padding-top: 75px;
+}
+.header-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.header-nav-link {
+  color: #333;
+  cursor: pointer;
+}
+.header-nav-link:hover {
+  color: #5a5151;
+}
+* {
+  box-sizing: border-box;
+}
+.form-wrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  background-color: #f9f9f9;
+  color: #333;
+  margin-bottom: 25px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 15px 0px;
+}
+h2 {
+  margin: 0;
+}
+
+.search-by {
+  color: #333;
 }

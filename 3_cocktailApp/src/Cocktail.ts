@@ -167,11 +167,12 @@ export class Cocktail {
     return result;
   }
 
-  public async getRandom(): Promise<ICocktailFilter | null> {
+  public async getRandom(): Promise<IDrinkFilter | null> {
     const result = await this._fetchApi<ICocktail>(CocktailEndpoints.RANDOM);
 
     if (result) {
-      return this.transformCocktailToCocktailFilter(result);
+      return this.transformCocktailToCocktailFilter(result)
+        .drinks[0] as IDrinkFilter;
     }
     return result;
   }

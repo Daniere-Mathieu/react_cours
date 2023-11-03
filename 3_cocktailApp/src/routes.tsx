@@ -1,9 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
 import Home from "./pages/Home";
 import Random from "./pages/Random";
-import Cocktails from "./pages/Cocktails";
 import CocktailDetail from "./pages/CocktailDetail";
 import NotFound from "./pages/NotFound";
+import AdvancedSearch from "./pages/AdvancedSearch";
 
 const Router = createBrowserRouter([
   {
@@ -15,12 +15,12 @@ const Router = createBrowserRouter([
     element: <Random />,
   },
   {
-    path: "/cocktails",
-    element: <Cocktails />,
-  },
-  {
     path: "/cocktail/:id",
     element: <CocktailDetail />,
+  },
+  {
+    path: "/advanced-search",
+    element: <AdvancedSearch />,
   },
   {
     path: "*",

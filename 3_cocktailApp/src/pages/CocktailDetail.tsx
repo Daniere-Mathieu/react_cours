@@ -10,7 +10,6 @@ function CocktailDetail() {
 
   const { cocktail, loading } = useCocktail(id as string);
   
-  // Wrap the returned JSX in the MainLayout component
   return (
     <MainLayout>
       {loading ? <Loading /> : cocktail ? <Detail drink={cocktail} /> : <div>Not found</div>}
