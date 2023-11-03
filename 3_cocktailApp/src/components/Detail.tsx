@@ -23,8 +23,18 @@ function Detail({ drink }: { drink: IDrinkFilter }) {
           <ul className="detail-list">
             {drink.strIngredient.map((ingredient, index) => (
               <li className="detail-list-item" key={index}>
-                {ingredient}{" "}
-                {drink.strMeasure ? ":" + drink.strMeasure[index] || "" : ""}
+                <img
+                  src={encodeURI(
+                    `https://www.thecocktaildb.com/images/ingredients/${ingredient}-Small.png`
+                  )}
+                  alt={ingredient}
+                />
+                <p>
+                  {ingredient}{" "}
+                  {drink.strMeasure && drink.strMeasure[index]
+                    ? ": " + drink.strMeasure[index]
+                    : ""}
+                </p>
               </li>
             ))}
           </ul>
